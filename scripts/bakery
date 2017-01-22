@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/init'
+
+product_code = ARGV[0]
+quantity = ARGV[1]
+
+puts "#{product_code} - #{quantity}"
+
