@@ -7,3 +7,4 @@ quantity = ARGV[1]
 
 puts "#{product_code} - #{quantity}"
 
+Bakery::PurchaseProcessor.process product_code, quantity.to_i

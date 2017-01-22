@@ -1,0 +1,18 @@
+products:
+  - name: Vegemite Scroll
+    code: VS5
+    quantities:
+      3: 6.99
+      5: 8.99
+  - name: Blueberry Muffin
+    code: MB11
+    quantities:
+      2: 9.95
+      5: 16.95
+      8: 24.95
+  - name: Croissant
+    code: CF
+    quantities:
+      3: 5.95
+      5: 9.95
+      9: 16.99
