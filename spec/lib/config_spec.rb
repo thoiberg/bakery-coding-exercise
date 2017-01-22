@@ -4,7 +4,7 @@ describe Bakery::Config do
 
     let(:subject) { described_class.load }
     let(:products) { [{name: Faker::TwinPeaks.character}] }
-    let(:yaml_config) { {products: products} }
+    let(:yaml_config) { {'products' => products} }
 
     before do
       allow(YAML).to receive(:load_file).and_return(yaml_config)

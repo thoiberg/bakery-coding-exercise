@@ -7,6 +7,8 @@ module Bakery
 
         config = Config.load
 
+        products = Products.load config.products
+
       end
 
       private

@@ -19,7 +19,7 @@ module Bakery
     attr_reader :products
 
     def initialize config
-      @products = config[:products]
+      @products = config['products']
     end
 
 
