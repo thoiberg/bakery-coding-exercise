@@ -1,7 +1,5 @@
 source "https://rubygems.org"
 
-gem 'subset_sum'
-
 group :test do
   gem 'rspec'
   gem 'faker'

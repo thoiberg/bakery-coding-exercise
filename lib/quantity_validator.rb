@@ -1,5 +1,3 @@
-require 'subset_sum'
-
 module Bakery
   class QuantityValidator
     class << self
@@ -16,7 +14,7 @@ module Bakery
       end
 
 
-      def random_attempt product_quantities, requested_quantity
+      def first_attempt product_quantities, requested_quantity
         difference = requested_quantity
         valid_amounts = []
 
@@ -25,7 +23,6 @@ module Bakery
           found = false
           product_quantities.each do |pq|
             new_diff = difference - pq
-            # require 'pry';binding.pry
             if new_diff < difference
               found = true
               next_num = pq
@@ -34,7 +31,7 @@ module Bakery
           end
 
           if not found
-            raise 'dcdfdfdf'
+            raise 'requested amount can\'t broken up into sellable amounts'
           end
 
           difference += next_num

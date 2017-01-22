@@ -33,13 +33,15 @@ describe Bakery::PurchaseProcessor do
       let(:config) { instance_double Bakery::Config, products: config_products }
       let(:product_quantities) { double 'product_quantities' }
       let(:product) { instance_double Bakery::Product, sellable_quantities: product_quantities }
+      let(:valid_quantity) { Faker::Number.digit.to_i }
 
       before do
         allow(Bakery::Config).to receive(:load).and_return config
         allow(Bakery::Products).to receive(:load).and_return products
         allow(products).to receive(:products)
         allow(products).to receive(:find_product_for).and_return product
-        allow(Bakery::QuantityValidator).to receive(:validate)
+        allow(product).to receive(:price_of).and_return(Faker::Number.digit.to_i)
+        allow(Bakery::QuantityValidator).to receive(:validate).and_return [valid_quantity]
       end
 
       it 'loads the config' do
@@ -68,6 +70,10 @@ describe Bakery::PurchaseProcessor do
 
         it 'validates the requested quantity can be distributed amongst the sold quantities' do
           expect(Bakery::QuantityValidator).to have_received(:validate).with product_quantities, quantity
+        end
+
+        it 'fetches the price of the quantities' do
+          expect(product).to have_received(:price_of).with(valid_quantity)
         end
 
       end

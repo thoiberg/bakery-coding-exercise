@@ -15,5 +15,9 @@ module Bakery
       @quantities.keys
     end
 
+    def price_of quantity
+      @quantities[quantity]
+    end
+
   end
 end

@@ -33,7 +33,6 @@ GEM
     slop (3.6.0)
     spoon (0.0.6)
       ffi
-    subset_sum (1.0.2)
 
 PLATFORMS
   java
@@ -43,7 +42,6 @@ DEPENDENCIES
   faker
   pry
   rspec
-  subset_sum
 
 BUNDLED WITH
    1.14.1
