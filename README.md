@@ -1,5 +1,5 @@
 # bakery-coding-exercise
-**NOTE:** This project is currently incomplete and not yet functional
+**NOTE: This project is currently incomplete and not yet functional**
 
 implementing a simulation bakery as a code exercise
 
