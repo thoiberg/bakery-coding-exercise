@@ -31,13 +31,15 @@ describe Bakery::PurchaseProcessor do
       let(:products) { instance_double Bakery::Products }
       let(:config_products) { double 'config_products' }
       let(:config) { instance_double Bakery::Config, products: config_products }
+      let(:product_quantities) { double 'product_quantities' }
+      let(:product) { instance_double Bakery::Product, sellable_quantities: product_quantities }
 
       before do
         allow(Bakery::Config).to receive(:load).and_return config
         allow(Bakery::Products).to receive(:load).and_return products
         allow(products).to receive(:products)
-        allow(products).to receive(:find_product_for).and_return 'tedg'
-
+        allow(products).to receive(:find_product_for).and_return product
+        allow(Bakery::QuantityValidator).to receive(:validate)
       end
 
       it 'loads the config' do
@@ -59,6 +61,14 @@ describe Bakery::PurchaseProcessor do
       end
 
       context 'when there is a product with a code that matches the requested product code' do
+
+        before do
+          subject
+        end
+
+        it 'validates the requested quantity can be distributed amongst the sold quantities' do
+          expect(Bakery::QuantityValidator).to have_received(:validate).with product_quantities, quantity
+        end
 
       end
 

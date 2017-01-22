@@ -13,6 +13,8 @@ module Bakery
 
         raise 'Product code does not match any products on the system' if product.nil?
 
+        QuantityValidator.validate product.sellable_quantities, quantity
+
       end
 
       private

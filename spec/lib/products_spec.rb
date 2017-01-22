@@ -10,14 +10,14 @@ describe Bakery::Products do
     let(:product_config) do
       [
         {
-            name: product_name,
-            code: product_code,
-            quantities: quantities
+            'name' => product_name,
+            'code' => product_code,
+            'quantities' => quantities
         },
         {
-            name: Faker::StarWars.droid,
-            code: Faker::StarWars.wookie_sentence,
-            quantities: {Faker::Number.digit.to_i => Faker::Number.digit}
+            'name' => Faker::StarWars.droid,
+            'code' => Faker::StarWars.wookie_sentence,
+            'quantities' =>  {Faker::Number.digit.to_i => Faker::Number.digit}
         }
       ]
     end

@@ -11,5 +11,9 @@ module Bakery
       @code == code
     end
 
+    def sellable_quantities
+      @quantities.keys
+    end
+
   end
 end

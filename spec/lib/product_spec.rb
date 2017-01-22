@@ -32,5 +32,15 @@ describe Bakery::Product do
 
   end
 
+  describe '#sellable_quantities' do
+
+    let(:quantity) { {1 => Faker::StarWars.droid, 2 => Faker::StarWars.droid, 3 => Faker::StarWars.droid} }
+
+    it 'returns the all the quantities the product can be sold in' do
+      expect(subject.sellable_quantities).to eq [1,2,3]
+    end
+
+  end
+
 
 end

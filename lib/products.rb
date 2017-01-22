@@ -7,7 +7,7 @@ module Bakery
 
       def load products_config
         products = products_config.map do |product_config|
-          Product.new product_config[:name], product_config[:code], product_config[:quantities]
+          Product.new product_config['name'], product_config['code'], product_config['quantities']
         end
 
         new products
