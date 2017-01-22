@@ -26,6 +26,57 @@ describe Bakery::PurchaseProcessor do
 
     end
 
+    context 'when inputs are valid' do
+
+      let(:products) { instance_double Bakery::Products }
+      let(:config_products) { double 'config_products' }
+      let(:config) { instance_double Bakery::Config, products: config_products }
+
+      before do
+        allow(Bakery::Config).to receive(:load).and_return config
+        allow(Bakery::Products).to receive(:load).and_return products
+        allow(products).to receive(:products)
+        allow(products).to receive(:find_product_for).and_return 'tedg'
+
+      end
+
+      it 'loads the config' do
+        subject
+
+        expect(Bakery::Config).to have_received :load
+      end
+
+      it 'loads the products using the config' do
+        subject
+
+        expect(Bakery::Products).to have_received(:load).with config_products
+      end
+
+      it 'looks for the  product that has the requested product code' do
+        subject
+
+        expect(products).to have_received(:find_product_for).with product_code
+      end
+
+      context 'when there is a product with a code that matches the requested product code' do
+
+      end
+
+      context 'when there are no products that match the requested product code' do
+
+        before do
+          allow(products).to receive(:find_product_for).and_return nil
+        end
+
+        it 'raises an exception' do
+          expect{subject}.to raise_error 'Product code does not match any products on the system'
+        end
+
+      end
+
+
+    end
+
   end
 
 end

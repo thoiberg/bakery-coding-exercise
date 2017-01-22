@@ -19,6 +19,12 @@ module Bakery
       @products = products
     end
 
+    def find_product_for product_code
+      @products.find do |product|
+        product.has_product_code? product_code
+      end
+    end
+
   end
 
 end

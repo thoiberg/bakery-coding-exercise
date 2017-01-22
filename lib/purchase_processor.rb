@@ -9,6 +9,10 @@ module Bakery
 
         products = Products.load config.products
 
+        product = products.find_product_for product_code
+
+        raise 'Product code does not match any products on the system' if product.nil?
+
       end
 
       private
